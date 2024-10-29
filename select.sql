@@ -52,3 +52,11 @@ SELECT Cesta.codigo, Cesta.nome, Mercado.id, Mercado.nome, Produto_Cesta.quantid
     JOIN Produto_Cesta on Produto_Cesta.produto_id = produto.id
     JOIN Cesta on Produto_Cesta.cesta_codigo = cesta.codigo
     order by Cesta.codigo, Mercado.nome, Produto.nome;
+
+SELECT Cesta.nome AS "nome_cesta", Mercado.nome AS "nome_mercado", Produto_Cesta.quantidade, Produto.unidade_medida, Produto.nome AS "nome_do_produto", Pesquisa.preco AS "preco_unitario", (quantidade * preco) AS preco_total FROM Pesquisa 
+    JOIN Produto on Pesquisa.produto_id = produto.id
+    JOIN Mercado on Pesquisa.mercado_id = mercado.id
+    JOIN Produto_Cesta on Produto_Cesta.produto_id = produto.id
+    JOIN Cesta on Produto_Cesta.cesta_codigo = cesta.codigo
+    WHERE Mercado.nome = 'Supermercado Preço Bom'
+    order by Cesta.nome, Produto.nome;
